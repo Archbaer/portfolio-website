@@ -1,0 +1,6 @@
+node_modules
+build
+.svelte-kit
+.remember
+docs
+.DS_Store
