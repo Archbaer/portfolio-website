@@ -1,0 +1,61 @@
+:root {
+  --bg: #020604;
+  --bg-panel: #041008;
+  --green: #00ff41;
+  --green-dim: #0a3d1a;
+  --text: #c8ffd8;
+  --text-dim: #5e8a6a;
+  --border: 1px solid #0f2f1a;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+a { color: var(--green); text-decoration: none; }
+
+.glow {
+  color: var(--green);
+  text-shadow:
+    0 0 8px rgba(0, 255, 65, 0.8),
+    0 0 24px rgba(0, 255, 65, 0.35);
+}
+
+.section-heading {
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-heading::after {
+  content: '';
+  flex: 1;
+  border-top: var(--border);
+}
+
+.card {
+  background: var(--bg-panel);
+  border: var(--border);
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  border-color: var(--green);
+  box-shadow: 0 0 16px rgba(0, 255, 65, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card { transition: none; }
+}
