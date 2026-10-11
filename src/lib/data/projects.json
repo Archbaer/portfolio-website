@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "cupcake-mononoke",
+    "index": "01",
+    "name": "cupcake_mononoke",
+    "tagline": "Production ETL for multi-asset market data",
+    "description": "End-to-end ETL pipeline for financial market data — commodities, crypto, stocks, forex, and company financials. Extracts from Alpha Vantage and Yahoo Finance, transforms into normalized hash-keyed tables, loads into PostgreSQL, and runs on a daily Apache Airflow DAG with API key rotation to survive free-tier rate limits.",
+    "tags": ["Python", "Airflow", "PostgreSQL", "ETL"],
+    "repo": "https://github.com/Archbaer/cupcake_mononoke",
+    "language": "Python"
+  },
+  {
+    "slug": "financehub",
+    "index": "02",
+    "name": "FinanceHub-proj",
+    "tagline": "Trading dashboard with portfolio analytics",
+    "description": "Stock and cryptocurrency analysis platform with portfolio tracking. Interactive candlestick charts, technical indicators (RSI, MACD, Bollinger Bands, moving averages), performance metrics (Sharpe ratio, volatility, max drawdown), and CSV export. Streamlit frontend with a Flask API variant for a microservices split.",
+    "tags": ["Python", "Streamlit", "Flask", "yfinance"],
+    "repo": "https://github.com/Archbaer/FinanceHub-proj",
+    "language": "Python"
+  },
+  {
+    "slug": "dodeploy",
+    "index": "03",
+    "name": "DoDeploy",
+    "tagline": "docker-compose → Terraform for AWS, GCP, or Azure",
+    "description": "Open-source CLI that parses a docker-compose file (or a guided interview) into a validated, cloud-neutral application model, applies provider-specific rules to recommend services with rationale and cost tiers, and generates reviewable Terraform HCL with diagnostics and TODO markers. It does not provision — you review, complete, and apply.",
+    "tags": ["TypeScript", "Terraform", "Zod", "CLI"],
+    "repo": "https://github.com/Archbaer/DoDeploy",
+    "language": "TypeScript"
+  },
+  {
+    "slug": "nn-experiments",
+    "index": "04",
+    "name": "nn_experiments",
+    "tagline": "Deep learning breadth — theory to working notebooks",
+    "description": "Curated experiments across classical deep learning and generative AI: PyTorch and TensorFlow/Keras fundamentals, CNNs for vision, LSTM time series, stacked autoencoders, self-organizing maps, and LangChain-based LLM work with RAG, Chroma vector DB, and Hugging Face. Breadth over depth — techniques, tooling, practical workflows.",
+    "tags": ["Python", "PyTorch", "TensorFlow", "LangChain"],
+    "repo": "https://github.com/Archbaer/nn_experiments",
+    "language": "Jupyter Notebook"
+  },
+  {
+    "slug": "credit-risk-pipeline",
+    "index": "05",
+    "name": "credit_risk_pipepline",
+    "tagline": "Credit default prediction with MLflow tracking",
+    "description": "End-to-end credit risk classification: raw data split into monthly batches, preprocessed with a fitted scaler, trained as a Random Forest with MLflow experiment tracking and model registry, and served through a FastAPI inference endpoint. Automated batch processing with test coverage.",
+    "tags": ["Python", "MLflow", "FastAPI", "scikit-learn"],
+    "repo": "https://github.com/Archbaer/credit_risk_pipepline",
+    "language": "Python"
+  },
+  {
+    "slug": "caring-iggy",
+    "index": "06",
+    "name": "Caring-Iggy",
+    "tagline": "Animal shelter platform on a microservice architecture",
+    "description": "Full-stack shelter adoption site. Next.js + React frontend behind a Kong API gateway (token checks, login throttling, no public inner services), five single-responsibility Spring Boot services each with its own PostgreSQL database, CSRF protection on mutations, and end-to-end Playwright tests exercising real user flows.",
+    "tags": ["TypeScript", "Next.js", "Spring Boot", "Kong", "PostgreSQL"],
+    "repo": "https://github.com/Archbaer/Caring-Iggy",
+    "language": "TypeScript"
+  }
+]
