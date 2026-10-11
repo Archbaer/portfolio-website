@@ -31,4 +31,13 @@
   .links a:hover {
     color: var(--green);
   }
+  @media (max-width: 560px) {
+    footer {
+      letter-spacing: 0.15em;
+      font-size: 0.65rem;
+    }
+    .links {
+      gap: 0.6rem;
+    }
+  }
 </style>

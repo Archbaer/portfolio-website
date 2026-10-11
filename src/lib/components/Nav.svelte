@@ -42,4 +42,20 @@
     color: var(--green);
     text-shadow: 0 0 8px rgba(0, 255, 65, 0.8);
   }
+  @media (max-width: 560px) {
+    nav {
+      padding: 0.6rem 0.9rem;
+    }
+    .brand {
+      letter-spacing: 0.15em;
+      font-size: 0.7rem;
+    }
+    .links {
+      gap: 0.9rem;
+    }
+    .links a {
+      letter-spacing: 0.1em;
+      font-size: 0.65rem;
+    }
+  }
 </style>
