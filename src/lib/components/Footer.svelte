@@ -1,9 +1,9 @@
 <footer>
   <div class="links">
     <a href="/#work">Work</a>
-    <span>|</span>
+    <span aria-hidden="true">|</span>
     <a href="/#about">About</a>
-    <span>|</span>
+    <span aria-hidden="true">|</span>
     <a href="/#contact">Contact</a>
   </div>
   <div class="glyphs" aria-hidden="true">□ ○ △</div>

@@ -17,6 +17,7 @@
       w = canvas.width = canvas.offsetWidth;
       h = canvas.height = canvas.offsetHeight;
       drops = Array(Math.floor(w / FONT)).fill(0).map(() => Math.floor(Math.random() * -h / FONT)) ;
+      if (!shouldAnimate(reduced)) draw(); // canvas.width assignment clears bitmap — repaint static frame
     }
 
     function draw() {

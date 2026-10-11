@@ -1,7 +1,3 @@
-<script>
-  import site from '../data/site.config.js';
-</script>
-
 <nav>
   <a href="/" class="brand glow">PORTFOLIO</a>
   <div class="links">
