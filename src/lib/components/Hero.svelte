@@ -1,6 +1,5 @@
 <script>
   import { onMount } from 'svelte';
-  import MatrixRain from './MatrixRain.svelte';
   import Cityscape from './Cityscape.svelte';
   import site from '../data/site.config.js';
 
@@ -45,7 +44,6 @@
 </script>
 
 <section class="hero">
-  <MatrixRain opacity={0.25} />
   <Cityscape />
   <div class="content">
     <h1>

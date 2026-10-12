@@ -38,7 +38,7 @@
 
 <style>
   .row {
-    padding: 2.5rem 0;
+    padding: 1.5rem 0;
     border-top: var(--border);
   }
   .row:last-child {
@@ -81,7 +81,7 @@
   .desc {
     color: var(--text-dim);
     max-width: 70ch;
-    margin: 1rem 0 1.25rem;
+    margin: 0.6rem 0 0.9rem;
   }
   .stack {
     list-style: none;
