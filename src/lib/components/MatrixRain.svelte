@@ -21,9 +21,9 @@
     }
 
     function draw() {
-      ctx.fillStyle = 'rgba(2, 6, 4, 0.08)';
+      ctx.fillStyle = 'rgba(3, 8, 5, 0.08)';
       ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#00ff41';
+      ctx.fillStyle = '#34d399';
       ctx.font = `${FONT}px monospace`;
       for (let i = 0; i < drops.length; i++) {
         const ch = CHARS[Math.floor(Math.random() * CHARS.length)];
@@ -47,7 +47,7 @@
     resize();
 
     if (shouldAnimate(reduced)) {
-      ctx.fillStyle = '#020604';
+      ctx.fillStyle = '#030805';
       ctx.fillRect(0, 0, w, h);
       loop();
       document.addEventListener('visibilitychange', onVisibility);

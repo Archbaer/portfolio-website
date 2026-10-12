@@ -1,16 +1,16 @@
 <svg viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
   <defs>
     <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#00ff41" stop-opacity="0.9" />
-      <stop offset="100%" stop-color="#00ff41" stop-opacity="0" />
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0" />
     </linearGradient>
     <linearGradient id="horizon" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0a3d1a" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#020604" stop-opacity="0" />
+      <stop offset="0%" stop-color="#14532d" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#030805" stop-opacity="0" />
     </linearGradient>
   </defs>
   <rect x="0" y="180" width="1200" height="140" fill="url(#horizon)" />
-  <g fill="#041008">
+  <g fill="#06140c">
     <rect x="40" y="140" width="50" height="180" />
     <rect x="110" y="90" width="40" height="230" />
     <rect x="170" y="160" width="70" height="160" />
@@ -26,7 +26,7 @@
     <rect x="1040" y="170" width="70" height="150" />
   </g>
   <!-- spires -->
-  <g fill="#041008">
+  <g fill="#06140c">
     <rect x="277" y="20" width="6" height="40" />
     <rect x="542" y="8" width="6" height="32" />
     <rect x="724" y="4" width="6" height="26" />
@@ -34,7 +34,7 @@
   <!-- beam -->
   <rect x="726" y="0" width="4" height="320" fill="url(#beam)" />
   <!-- scattered windows -->
-  <g fill="#00ff41" opacity="0.5">
+  <g fill="#34d399" opacity="0.5">
     <rect x="120" y="110" width="3" height="3" />
     <rect x="135" y="150" width="3" height="3" />
     <rect x="270" y="90" width="3" height="3" />
