@@ -12,6 +12,11 @@ export default {
     { label: 'mode', value: 'Remote' },
     { label: 'since', value: '20XX' }
   ],
+  // TODO: replace with real entries from your LinkedIn
+  education: [
+    { degree: 'Your Degree (placeholder)', school: 'Your University', years: '20XX — 20XX' }
+  ],
+  interests: ['Machine Learning', 'Data Engineering', 'Cloud Infrastructure', 'Full-Stack Systems'],
   stack: [
     { group: 'Data & ML', items: ['Python', 'Airflow', 'PostgreSQL', 'MLflow', 'PyTorch'] },
     { group: 'Backend', items: ['FastAPI', 'Flask', 'Spring Boot', 'Kong'] },

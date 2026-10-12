@@ -1,21 +1,55 @@
 <script>
+  import { onMount } from 'svelte';
   import SectionHeading from './SectionHeading.svelte';
+  import ScrambleText from './ScrambleText.svelte';
   import site from '../data/site.config.js';
+
+  const DURATION = 2400;
+  const STAGGER = 150;
+
+  let section;
+  let scramblers = [];
+  let playedOnce = false;
+
+  function playAll() {
+    scramblers.forEach((s, i) => s.play(i * STAGGER));
+  }
+
+  function resetAll() {
+    scramblers.forEach((s) => s.reset());
+  }
+
+  onMount(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !playedOnce) {
+          playedOnce = true;
+          playAll();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  });
 </script>
 
-<section id="about">
+<section id="about" aria-label="About" bind:this={section} onmouseenter={playAll} onmouseleave={resetAll}>
   <SectionHeading title="About" />
   <div class="columns">
     <div class="bio">
       <h3><span class="dim">$</span> whoami</h3>
-      {#each site.bio as paragraph}
-        <p>{paragraph}</p>
+      {#each site.bio as paragraph, i}
+        <p><ScrambleText bind:this={scramblers[i]} text={paragraph} duration={DURATION} auto={false} /></p>
       {/each}
       <div class="stats">
-        {#each site.stats as stat}
+        {#each site.stats as stat, i}
           <div class="stat card">
             <span class="stat-label">{stat.label}</span>
-            <span class="stat-value">{stat.value}</span>
+            <span class="stat-value">
+              <ScrambleText bind:this={scramblers[site.bio.length + i]} text={stat.value} duration={DURATION} auto={false} />
+            </span>
           </div>
         {/each}
       </div>
@@ -40,6 +74,33 @@
       </div>
     </div>
   </div>
+
+  <div class="panels">
+    <div class="cyber">
+      <h4><span class="dim">//</span> education</h4>
+      {#each site.education as edu, i}
+        <div class="edu">
+          <span class="edu-degree">
+            <ScrambleText bind:this={scramblers[site.bio.length + site.stats.length + i * 2]} text={edu.degree} duration={DURATION} auto={false} />
+          </span>
+          <span class="edu-school">
+            <ScrambleText bind:this={scramblers[site.bio.length + site.stats.length + i * 2 + 1]} text="{edu.school} — {edu.years}" duration={DURATION} auto={false} />
+          </span>
+        </div>
+      {/each}
+    </div>
+
+    <div class="cyber">
+      <h4><span class="dim">//</span> areas of interest</h4>
+      <ul class="interests">
+        {#each site.interests as interest, i}
+          <li>
+            <ScrambleText bind:this={scramblers[site.bio.length + site.stats.length + site.education.length * 2 + i]} text={interest} duration={DURATION} auto={false} />
+          </li>
+        {/each}
+      </ul>
+    </div>
+  </div>
 </section>
 
 <style>
@@ -61,6 +122,13 @@
     margin: 0 0 1rem;
     letter-spacing: 0.1em;
     font-size: 1.1rem;
+  }
+  h4 {
+    margin: 0 0 1.25rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--green);
   }
   .dim {
     color: var(--text-dim);
@@ -142,7 +210,7 @@
     color: var(--text-dim);
     font-size: 0.75rem;
   }
-  ul {
+  .panel ul {
     list-style: none;
     padding: 0;
     margin: 0.5rem 0 0;
@@ -150,7 +218,7 @@
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-  li {
+  .panel li {
     border: var(--border);
     border-radius: 999px;
     padding: 0.2rem 0.7rem;
@@ -158,8 +226,66 @@
     color: var(--green);
     background: rgba(52, 211, 153, 0.05);
   }
+
+  /* cyberpunk panels: angular clipped corners + scanlines + neon edge */
+  .panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .cyber {
+    position: relative;
+    padding: 1.5rem 1.75rem 1.75rem;
+    background: var(--bg-panel);
+    border: var(--border);
+    border-left: 2px solid var(--green);
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+    overflow: hidden;
+  }
+  .cyber::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent 0 2px,
+      rgba(52, 211, 153, 0.03) 2px 3px
+    );
+    pointer-events: none;
+  }
+  .edu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .edu-degree {
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  .edu-school {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+  }
+  .interests {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .interests li {
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    padding: 0.3rem 0.8rem;
+    font-size: 0.78rem;
+    color: var(--green);
+    background: rgba(52, 211, 153, 0.05);
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  }
   @media (max-width: 900px) {
-    .columns {
+    .columns,
+    .panels {
       grid-template-columns: 1fr;
     }
   }
