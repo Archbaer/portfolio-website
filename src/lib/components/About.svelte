@@ -53,6 +53,20 @@
           </div>
         {/each}
       </div>
+
+      <div class="cyber edu-panel">
+        <h4><span class="dim">//</span> education</h4>
+        {#each site.education as edu, i}
+          <div class="edu">
+            <span class="edu-degree">
+              <ScrambleText bind:this={scramblers[site.bio.length + site.stats.length + i * 2]} text={edu.degree} duration={DURATION} auto={false} />
+            </span>
+            <span class="edu-school">
+              <ScrambleText bind:this={scramblers[site.bio.length + site.stats.length + i * 2 + 1]} text="{edu.school} — {edu.years}" duration={DURATION} auto={false} />
+            </span>
+          </div>
+        {/each}
+      </div>
     </div>
 
     <div class="panel card">
@@ -76,20 +90,6 @@
   </div>
 
   <div class="panels">
-    <div class="cyber">
-      <h4><span class="dim">//</span> education</h4>
-      {#each site.education as edu, i}
-        <div class="edu">
-          <span class="edu-degree">
-            <ScrambleText bind:this={scramblers[site.bio.length + site.stats.length + i * 2]} text={edu.degree} duration={DURATION} auto={false} />
-          </span>
-          <span class="edu-school">
-            <ScrambleText bind:this={scramblers[site.bio.length + site.stats.length + i * 2 + 1]} text="{edu.school} — {edu.years}" duration={DURATION} auto={false} />
-          </span>
-        </div>
-      {/each}
-    </div>
-
     <div class="cyber">
       <h4><span class="dim">//</span> areas of interest</h4>
       <ul class="interests">
@@ -229,7 +229,7 @@
   /* cyberpunk panels: angular clipped corners + scanlines + neon edge */
   .panels {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1rem;
     margin-top: 1.5rem;
   }
@@ -253,10 +253,16 @@
     );
     pointer-events: none;
   }
+  .edu-panel {
+    margin-top: 1.5rem;
+  }
   .edu {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+  }
+  .edu + .edu {
+    margin-top: 1rem;
   }
   .edu-degree {
     color: var(--text);

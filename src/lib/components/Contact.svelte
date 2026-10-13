@@ -27,16 +27,6 @@
       label: 'LinkedIn',
       href: site.links.linkedin,
       icon: 'M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-8.5c0-2.03-.04-4.64-2.83-4.64-2.83 0-3.27 2.2-3.27 4.48V24H8V8z'
-    },
-    {
-      label: 'X',
-      href: site.links.x,
-      icon: 'M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z'
-    },
-    {
-      label: 'Email',
-      href: `mailto:${site.links.email}`,
-      icon: 'M2 3h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm10 9.3L3.5 5v14h17V5L12 12.3z'
     }
   ];
 </script>
@@ -63,7 +53,7 @@
 
     <form class="terminal card" onsubmit={(e) => { e.preventDefault(); submit(); }}>
       <div class="term-head">
-        <span class="path">{site.links.email} ~ $</span>
+        <span class="path">~/contact ~ $</span>
       </div>
       <div class="term-body">
         {#if sent}
