@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { shouldAnimate, nextDrops } from '../rain.js';
 
-  let { opacity = 0.35 } = $props();
+  let { opacity = 0.2, frameSkip = 3 } = $props();
 
   const CHARS = 'アイウエオカキクケコサシスセソ0123456789';
   const FONT = 16;
@@ -11,7 +11,7 @@
   onMount(() => {
     const ctx = canvas.getContext('2d');
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let w, h, drops, raf;
+    let w, h, drops, raf, frame = 0;
 
     function resize() {
       w = canvas.width = canvas.offsetWidth;
@@ -33,7 +33,7 @@
     }
 
     function loop() {
-      draw();
+      if (frame++ % frameSkip === 0) draw(); // throttle: advance 1 in N frames = slower fall
       raf = requestAnimationFrame(loop);
     }
 
@@ -67,10 +67,11 @@
 
 <style>
   canvas {
-    position: absolute;
+    position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
+    z-index: 0;
     pointer-events: none;
   }
 </style>

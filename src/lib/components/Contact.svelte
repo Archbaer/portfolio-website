@@ -95,17 +95,16 @@
 
 <style>
   section {
-    min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 6rem max(2rem, 8vw);
+    padding: 2.5rem max(2rem, 8vw);
   }
   .columns {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    gap: 3rem;
-    margin-top: 2.5rem;
+    gap: 2rem;
+    margin-top: 1.25rem;
     align-items: start;
   }
   .hint {

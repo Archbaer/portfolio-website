@@ -33,6 +33,7 @@ a { color: var(--green); text-decoration: none; }
   text-transform: uppercase;
   letter-spacing: 0.4em;
   font-size: 1rem;
+  margin: 0 0 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;

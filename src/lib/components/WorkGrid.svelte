@@ -15,9 +15,9 @@
 
 <style>
   section {
-    padding: 6rem max(2rem, 8vw);
+    padding: 2.5rem max(2rem, 8vw);
   }
   .rows {
-    margin-top: 2rem;
+    margin-top: 1.25rem;
   }
 </style>
