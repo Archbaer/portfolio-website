@@ -1,6 +1,5 @@
 <script>
   import { onMount } from 'svelte';
-  import Cityscape from './Cityscape.svelte';
   import site from '../data/site.config.js';
 
   const BOOT_LINES = [
@@ -44,7 +43,6 @@
 </script>
 
 <section class="hero">
-  <Cityscape />
   <div class="content">
     <h1>
       <span class="glow">PORT</span><span class="white">FOLIO</span><span class="cursor" aria-hidden="true"></span>
