@@ -7,6 +7,11 @@
   const DURATION = 2400;
   const STAGGER = 150;
 
+  // scrambler index layout: bio | stats | education (x2 each) | stack (name + items per group) | interests
+  const stackBase = site.bio.length + site.stats.length + site.education.length * 2;
+  const stackCount = site.stack.reduce((n, g) => n + 1 + g.items.length, 0);
+  const groupBase = (gi) => stackBase + site.stack.slice(0, gi).reduce((n, g) => n + 1 + g.items.length, 0);
+
   let section;
   let scramblers = [];
   let playedOnce = false;
@@ -75,12 +80,16 @@
         <span class="path">~/about — profile.ts</span>
       </div>
       <div class="panel-body">
-        {#each site.stack as group}
+        {#each site.stack as group, gi}
           <div class="group">
-            <span class="group-name">// {group.group}</span>
+            <span class="group-name">
+              <ScrambleText bind:this={scramblers[groupBase(gi)]} text="// {group.group}" duration={DURATION} auto={false} />
+            </span>
             <ul>
-              {#each group.items as item}
-                <li>{item}</li>
+              {#each group.items as item, ii}
+                <li>
+                  <ScrambleText bind:this={scramblers[groupBase(gi) + 1 + ii]} text={item} duration={DURATION} auto={false} />
+                </li>
               {/each}
             </ul>
           </div>
@@ -95,7 +104,7 @@
       <ul class="interests">
         {#each site.interests as interest, i}
           <li>
-            <ScrambleText bind:this={scramblers[site.bio.length + site.stats.length + site.education.length * 2 + i]} text={interest} duration={DURATION} auto={false} />
+            <ScrambleText bind:this={scramblers[stackBase + stackCount + i]} text={interest} duration={DURATION} auto={false} />
           </li>
         {/each}
       </ul>

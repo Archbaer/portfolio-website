@@ -45,10 +45,10 @@
 <section class="hero">
   <div class="content">
     <h1>
-      <span class="glow">PORT</span><span class="white">FOLIO</span><span class="cursor" aria-hidden="true"></span>
+      <span class="glow">DANIEL</span> <span class="white">KEBAILI</span><span class="cursor" aria-hidden="true"></span>
     </h1>
     <div class="rule"></div>
-    <p class="tagline">{site.name} — {site.role}</p>
+    <p class="tagline">{site.role}</p>
 
     <div class="boot" aria-label="Terminal boot sequence">
       {#each typed as line}
@@ -83,7 +83,7 @@
   }
   h1 {
     margin: 0;
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-size: clamp(1.75rem, 8vw, 5.5rem);
     letter-spacing: 0.15em;
     font-weight: 700;
     line-height: 1.05;
@@ -107,9 +107,9 @@
   }
   .tagline {
     color: var(--text-dim);
-    letter-spacing: 0.2em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 1.05rem;
     margin: 0 0 2rem;
   }
   .boot {
