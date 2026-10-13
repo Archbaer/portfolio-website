@@ -10,23 +10,23 @@
     "language": "Python"
   },
   {
-    "slug": "financehub",
-    "index": "02",
-    "name": "FinanceHub-proj",
-    "tagline": "Trading dashboard with portfolio analytics",
-    "description": "Stock and cryptocurrency analysis platform with portfolio tracking. Interactive candlestick charts, technical indicators (RSI, MACD, Bollinger Bands, moving averages), performance metrics (Sharpe ratio, volatility, max drawdown), and CSV export. Streamlit frontend with a Flask API variant for a microservices split.",
-    "tags": ["Python", "Streamlit", "Flask", "yfinance"],
-    "repo": "https://github.com/Archbaer/FinanceHub-proj",
-    "language": "Python"
-  },
-  {
     "slug": "dodeploy",
-    "index": "03",
+    "index": "02",
     "name": "DoDeploy",
     "tagline": "docker-compose → Terraform for AWS, GCP, or Azure",
     "description": "Open-source CLI that parses a docker-compose file (or a guided interview) into a validated, cloud-neutral application model, applies provider-specific rules to recommend services with rationale and cost tiers, and generates reviewable Terraform HCL with diagnostics and TODO markers. It does not provision — you review, complete, and apply.",
     "tags": ["TypeScript", "Terraform", "Zod", "CLI"],
     "repo": "https://github.com/Archbaer/DoDeploy",
+    "language": "TypeScript"
+  },
+  {
+    "slug": "caring-iggy",
+    "index": "03",
+    "name": "Caring-Iggy",
+    "tagline": "Animal shelter platform on a microservice architecture",
+    "description": "Full-stack shelter adoption site. Next.js + React frontend behind a Kong API gateway (token checks, login throttling, no public inner services), five single-responsibility Spring Boot services each with its own PostgreSQL database, CSRF protection on mutations, and end-to-end Playwright tests exercising real user flows.",
+    "tags": ["TypeScript", "Next.js", "Spring Boot", "Kong", "PostgreSQL"],
+    "repo": "https://github.com/Archbaer/Caring-Iggy",
     "language": "TypeScript"
   },
   {
@@ -50,13 +50,13 @@
     "language": "Python"
   },
   {
-    "slug": "caring-iggy",
+    "slug": "financehub",
     "index": "06",
-    "name": "Caring-Iggy",
-    "tagline": "Animal shelter platform on a microservice architecture",
-    "description": "Full-stack shelter adoption site. Next.js + React frontend behind a Kong API gateway (token checks, login throttling, no public inner services), five single-responsibility Spring Boot services each with its own PostgreSQL database, CSRF protection on mutations, and end-to-end Playwright tests exercising real user flows.",
-    "tags": ["TypeScript", "Next.js", "Spring Boot", "Kong", "PostgreSQL"],
-    "repo": "https://github.com/Archbaer/Caring-Iggy",
-    "language": "TypeScript"
+    "name": "FinanceHub-proj",
+    "tagline": "Trading dashboard with portfolio analytics",
+    "description": "Stock and cryptocurrency analysis platform with portfolio tracking. Interactive candlestick charts, technical indicators (RSI, MACD, Bollinger Bands, moving averages), performance metrics (Sharpe ratio, volatility, max drawdown), and CSV export. Streamlit frontend with a Flask API variant for a microservices split.",
+    "tags": ["Python", "Streamlit", "Flask", "yfinance"],
+    "repo": "https://github.com/Archbaer/FinanceHub-proj",
+    "language": "Python"
   }
 ]

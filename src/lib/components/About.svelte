@@ -7,6 +7,11 @@
   const DURATION = 2400;
   const STAGGER = 150;
 
+  // scrambler index layout: bio | stats | education (x2 each) | stack (name + items per group) | interests
+  const stackBase = site.bio.length + site.stats.length + site.education.length * 2;
+  const stackCount = site.stack.reduce((n, g) => n + 1 + g.items.length, 0);
+  const groupBase = (gi) => stackBase + site.stack.slice(0, gi).reduce((n, g) => n + 1 + g.items.length, 0);
+
   let section;
   let scramblers = [];
   let playedOnce = false;
@@ -53,6 +58,20 @@
           </div>
         {/each}
       </div>
+
+      <div class="cyber edu-panel">
+        <h4><span class="dim">//</span> education</h4>
+        {#each site.education as edu, i}
+          <div class="edu">
+            <span class="edu-degree">
+              <ScrambleText bind:this={scramblers[site.bio.length + site.stats.length + i * 2]} text={edu.degree} duration={DURATION} auto={false} />
+            </span>
+            <span class="edu-school">
+              <ScrambleText bind:this={scramblers[site.bio.length + site.stats.length + i * 2 + 1]} text="{edu.school} — {edu.years}" duration={DURATION} auto={false} />
+            </span>
+          </div>
+        {/each}
+      </div>
     </div>
 
     <div class="panel card">
@@ -61,12 +80,16 @@
         <span class="path">~/about — profile.ts</span>
       </div>
       <div class="panel-body">
-        {#each site.stack as group}
+        {#each site.stack as group, gi}
           <div class="group">
-            <span class="group-name">// {group.group}</span>
+            <span class="group-name">
+              <ScrambleText bind:this={scramblers[groupBase(gi)]} text="// {group.group}" duration={DURATION} auto={false} />
+            </span>
             <ul>
-              {#each group.items as item}
-                <li>{item}</li>
+              {#each group.items as item, ii}
+                <li>
+                  <ScrambleText bind:this={scramblers[groupBase(gi) + 1 + ii]} text={item} duration={DURATION} auto={false} />
+                </li>
               {/each}
             </ul>
           </div>
@@ -77,25 +100,11 @@
 
   <div class="panels">
     <div class="cyber">
-      <h4><span class="dim">//</span> education</h4>
-      {#each site.education as edu, i}
-        <div class="edu">
-          <span class="edu-degree">
-            <ScrambleText bind:this={scramblers[site.bio.length + site.stats.length + i * 2]} text={edu.degree} duration={DURATION} auto={false} />
-          </span>
-          <span class="edu-school">
-            <ScrambleText bind:this={scramblers[site.bio.length + site.stats.length + i * 2 + 1]} text="{edu.school} — {edu.years}" duration={DURATION} auto={false} />
-          </span>
-        </div>
-      {/each}
-    </div>
-
-    <div class="cyber">
       <h4><span class="dim">//</span> areas of interest</h4>
       <ul class="interests">
         {#each site.interests as interest, i}
           <li>
-            <ScrambleText bind:this={scramblers[site.bio.length + site.stats.length + site.education.length * 2 + i]} text={interest} duration={DURATION} auto={false} />
+            <ScrambleText bind:this={scramblers[stackBase + stackCount + i]} text={interest} duration={DURATION} auto={false} />
           </li>
         {/each}
       </ul>
@@ -229,7 +238,7 @@
   /* cyberpunk panels: angular clipped corners + scanlines + neon edge */
   .panels {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1rem;
     margin-top: 1.5rem;
   }
@@ -253,10 +262,16 @@
     );
     pointer-events: none;
   }
+  .edu-panel {
+    margin-top: 1.5rem;
+  }
   .edu {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+  }
+  .edu + .edu {
+    margin-top: 1rem;
   }
   .edu-degree {
     color: var(--text);
