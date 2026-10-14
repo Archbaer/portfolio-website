@@ -1,5 +1,5 @@
 <script>
-  import { PUBLIC_WEB3FORMS_KEY } from '$app/env/public';
+  import { WEB3FORMS } from '$app/env/public';
   import SectionHeading from './SectionHeading.svelte';
   import site from '../data/site.config.js';
 
@@ -24,7 +24,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          access_key: PUBLIC_WEB3FORMS_KEY,
+          access_key: WEB3FORMS,
           name: name.trim(),
           email: email.trim(),
           message: message.trim(),
