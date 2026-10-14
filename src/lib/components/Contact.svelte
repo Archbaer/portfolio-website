@@ -1,20 +1,44 @@
 <script>
+  import { PUBLIC_WEB3FORMS_KEY } from '$app/env/public';
   import SectionHeading from './SectionHeading.svelte';
   import site from '../data/site.config.js';
 
   let name = $state('');
   let email = $state('');
   let message = $state('');
+  let botcheck = $state('');
   let errors = $state([]);
+  let sending = $state(false);
   let sent = $state(false);
 
-  // UI-only for now — wire to an endpoint (e.g. Web3Forms) later.
-  function submit() {
+  async function submit() {
     errors = [];
     if (!name.trim()) errors.push('name is required');
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) errors.push('valid email is required');
     if (!message.trim()) errors.push('message is required');
-    if (errors.length === 0) sent = true;
+    if (errors.length > 0) return;
+
+    sending = true;
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: PUBLIC_WEB3FORMS_KEY,
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim(),
+          botcheck
+        })
+      });
+      const data = await res.json();
+      if (data.success) sent = true;
+      else errors.push('send failed — try again');
+    } catch {
+      errors.push('network error — try again');
+    } finally {
+      sending = false;
+    }
   }
 
   const socials = [
@@ -73,10 +97,12 @@
             <span class="prompt">&gt; message</span>
             <textarea bind:value={message} rows="4"></textarea>
           </label>
+          <!-- honeypot: humans never see or fill this; bots do -->
+          <input class="hp" bind:value={botcheck} type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
           {#each errors as err}
             <p class="err">&gt; {err}</p>
           {/each}
-          <button class="pill-btn" type="submit">$ send_message</button>
+          <button class="pill-btn" type="submit" disabled={sending}>$ {sending ? 'sending...' : 'send_message'}</button>
         {/if}
       </div>
     </form>
@@ -182,6 +208,13 @@
     margin: 0;
     color: #f87171;
     font-size: 0.8rem;
+  }
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
   }
   .ok-line {
     margin: 0;

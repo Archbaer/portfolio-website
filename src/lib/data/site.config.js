@@ -3,9 +3,9 @@ export default {
   role: 'Software Engineer',
   location: 'Portsmouth, United Kingdom --Remote --Hybrid --Onsite',
   bio: [
-    'Hi, I am Daniel Kebaili. I am studying my BSc in Computer Science and Advanced Technologies at University of Portsmouth. My work today is focused on machine learning engineering, data science, and building scalable software solutions.',
+    'Hi, I am Daniel Kebaili. I am studying my BSc in Computer Science and Advanced Technologies at University of Portsmouth. Cybersecurity is where I am heading — a genuine passion and the career I intend to pursue.',
     'I have hands-on experience with PyTorch and TensorFlow for developing and experimenting with neural networks, along with practical knowledge of data workflows using Python, NumPy, pandas, and scikit-learn. I also have a passion for tinkering with web applications frameworks, both frontend and backend. Deployment and containerisation are areas I am knowledgeable to some extent, but I am always discovering new techniques.',
-    'CyberSecurity, Data pipelines, machine learning, and Software engineering.'
+    'Most of my work so far spans data engineering, software engineering, and machine learning — but alongside those, my focus now is cybersecurity.'
   ],
   stats: [
     { label: 'focus', value: 'Cybersecurity' },
