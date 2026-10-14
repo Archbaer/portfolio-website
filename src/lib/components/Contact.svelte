@@ -2,6 +2,7 @@
   import { WEB3FORMS } from '$app/env/public';
   import SectionHeading from './SectionHeading.svelte';
   import site from '../data/site.config.js';
+  import { sanitize, validateForm, LIMITS } from '../form.js';
 
   let name = $state('');
   let email = $state('');
@@ -12,10 +13,12 @@
   let sent = $state(false);
 
   async function submit() {
-    errors = [];
-    if (!name.trim()) errors.push('name is required');
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) errors.push('valid email is required');
-    if (!message.trim()) errors.push('message is required');
+    const clean = {
+      name: sanitize(name, LIMITS.name),
+      email: sanitize(email, LIMITS.email),
+      message: sanitize(message, LIMITS.message)
+    };
+    errors = validateForm(clean);
     if (errors.length > 0) return;
 
     sending = true;
@@ -25,15 +28,13 @@
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS,
-          name: name.trim(),
-          email: email.trim(),
-          message: message.trim(),
+          ...clean,
           botcheck
         })
       });
       const data = await res.json();
       if (data.success) sent = true;
-      else errors.push('send failed — try again');
+      else errors.push(`send failed — ${data.message || 'try again'}`);
     } catch {
       errors.push('network error — try again');
     } finally {
@@ -93,15 +94,15 @@
         {:else}
           <label>
             <span class="prompt">&gt; name</span>
-            <input bind:value={name} type="text" autocomplete="name" />
+            <input bind:value={name} type="text" autocomplete="name" maxlength={LIMITS.name} />
           </label>
           <label>
             <span class="prompt">&gt; email</span>
-            <input bind:value={email} type="text" inputmode="email" autocomplete="email" />
+            <input bind:value={email} type="text" inputmode="email" autocomplete="email" maxlength={LIMITS.email} />
           </label>
           <label>
             <span class="prompt">&gt; message</span>
-            <textarea bind:value={message} rows="4"></textarea>
+            <textarea bind:value={message} rows="4" maxlength={LIMITS.message}></textarea>
           </label>
           <!-- honeypot: humans never see or fill this; bots do -->
           <input class="hp" bind:value={botcheck} type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
