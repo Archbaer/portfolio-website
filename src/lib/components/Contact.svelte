@@ -1,5 +1,5 @@
 <script>
-  import { PUBLIC_WEB3FORMS_KEY } from '$app/env/public';
+  import { WEB3FORMS } from '$app/env/public';
   import SectionHeading from './SectionHeading.svelte';
   import site from '../data/site.config.js';
 
@@ -24,7 +24,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          access_key: PUBLIC_WEB3FORMS_KEY,
+          access_key: WEB3FORMS,
           name: name.trim(),
           email: email.trim(),
           message: message.trim(),
@@ -83,7 +83,13 @@
         {#if sent}
           <p class="ok-line">&gt; validating... <span class="ok">[OK]</span></p>
           <p class="ok-line">&gt; message queued <span class="ok">[OK]</span></p>
-          <p class="ok-line">&gt; thanks — I read everything. <span class="cursor" aria-hidden="true"></span></p>
+          <p class="ok-line">&gt; thanks — I read everything.</p>
+          <p class="ok-line">
+            &gt; continue:
+            <a class="next-link" href={site.links.github} target="_blank" rel="noopener">github ↗</a>
+            <a class="next-link" href={site.links.linkedin} target="_blank" rel="noopener">linkedin ↗</a>
+            <span class="cursor" aria-hidden="true"></span>
+          </p>
         {:else}
           <label>
             <span class="prompt">&gt; name</span>
@@ -223,6 +229,16 @@
   }
   .ok {
     color: var(--green);
+  }
+  .next-link {
+    color: var(--green);
+    margin-left: 0.75rem;
+    border-bottom: 1px solid rgba(52, 211, 153, 0.35);
+    transition: text-shadow 0.2s, border-color 0.2s;
+  }
+  .next-link:hover {
+    text-shadow: var(--glow-soft);
+    border-color: var(--green);
   }
   .pill-btn {
     align-self: flex-start;
