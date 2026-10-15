@@ -106,9 +106,11 @@
           </label>
           <!-- honeypot: humans never see or fill this; bots do -->
           <input class="hp" bind:value={botcheck} type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
-          {#each errors as err}
-            <p class="err">&gt; {err}</p>
-          {/each}
+          <div role="alert">
+            {#each errors as err}
+              <p class="err">&gt; {err}</p>
+            {/each}
+          </div>
           <button class="pill-btn" type="submit" disabled={sending}>$ {sending ? 'sending...' : 'send_message'}</button>
         {/if}
       </div>
