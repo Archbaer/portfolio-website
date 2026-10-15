@@ -26,14 +26,14 @@ export function isValidEmail(email) {
 }
 
 /**
- * Expects already-sanitized values; returns human-readable errors.
+ * Expects already-sanitized values; returns i18n error keys.
  * @param {{ name: string, email: string, message: string }} fields
  * @returns {string[]}
  */
 export function validateForm({ name, email, message }) {
   const errors = [];
-  if (!name) errors.push('name is required');
-  if (!isValidEmail(email)) errors.push('valid email is required');
-  if (!message) errors.push('message is required');
+  if (!name) errors.push('form.name_required');
+  if (!isValidEmail(email)) errors.push('form.email_invalid');
+  if (!message) errors.push('form.message_required');
   return errors;
 }
