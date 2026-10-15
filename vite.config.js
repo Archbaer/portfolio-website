@@ -6,7 +6,21 @@ export default defineConfig({
   plugins: [
     sveltekit({
       adapter: adapter({ fallback: '404.html' }),
-      prerender: { handleHttpError: 'warn' }
+      prerender: { handleHttpError: 'warn' },
+      csp: {
+        mode: 'hash',
+        directives: {
+          'default-src': ['self'],
+          'script-src': ['self'],
+          'style-src': ['self', 'unsafe-inline'],
+          'font-src': ['self', 'data:'],
+          'img-src': ['self', 'data:'],
+          'connect-src': ['self', 'https://api.web3forms.com'],
+          'object-src': ['none'],
+          'base-uri': ['none'],
+          'form-action': ['self']
+        }
+      }
     })
   ],
   test: { include: ['tests/**/*.test.js'] }
