@@ -6,12 +6,14 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "prepare": "svelte-kit sync",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./jsconfig.json",
     "test": "vitest run",
     "sync-projects": "node scripts/sync-projects.mjs"
   },
   "devDependencies": {
+    "@fontsource/jetbrains-mono": "^5.3.0",
     "@sveltejs/adapter-static": "^4.0.0",
     "@sveltejs/kit": "^3.0.1",
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
