@@ -1,6 +1,7 @@
 <script>
   import ScrambleText from './ScrambleText.svelte';
   import { iconFor } from '../icons.js';
+  import { getLang } from '../i18n.svelte.js';
 
   let { project } = $props();
   let nameScramble;
@@ -19,7 +20,7 @@
     </a>
   </header>
 
-  <p class="desc">{project.description}</p>
+  <p class="desc">{getLang() === 'zh' ? project.description_zh : project.description}</p>
 
   <ul class="stack">
     {#each project.tags as tag}
