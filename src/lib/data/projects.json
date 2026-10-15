@@ -5,9 +5,15 @@
     "name": "cupcake_mononoke",
     "tagline": "Production ETL for multi-asset market data",
     "description": "End-to-end ETL pipeline for financial market data — commodities, crypto, stocks, forex, and company financials. Extracts from Alpha Vantage and Yahoo Finance, transforms into normalized hash-keyed tables, loads into PostgreSQL, and runs on a daily Apache Airflow DAG with API key rotation to survive free-tier rate limits.",
-    "tags": ["Python", "Airflow", "PostgreSQL", "ETL"],
+    "tags": [
+      "Python",
+      "Airflow",
+      "PostgreSQL",
+      "ETL"
+    ],
     "repo": "https://github.com/Archbaer/cupcake_mononoke",
-    "language": "Python"
+    "language": "Python",
+    "description_zh": "端到端金融市场数据 ETL 管道——覆盖大宗商品、加密货币、股票、外汇和公司财报。从 Alpha Vantage 和 Yahoo Finance 抽取数据，转换为规范化的哈希键表，加载到 PostgreSQL，并通过 Apache Airflow 每日 DAG 调度运行，带 API 密钥轮换以应对免费套餐的速率限制。"
   },
   {
     "slug": "dodeploy",
@@ -15,9 +21,15 @@
     "name": "DoDeploy",
     "tagline": "docker-compose → Terraform for AWS, GCP, or Azure",
     "description": "Open-source CLI that parses a docker-compose file (or a guided interview) into a validated, cloud-neutral application model, applies provider-specific rules to recommend services with rationale and cost tiers, and generates reviewable Terraform HCL with diagnostics and TODO markers. It does not provision — you review, complete, and apply.",
-    "tags": ["TypeScript", "Terraform", "Zod", "CLI"],
+    "tags": [
+      "TypeScript",
+      "Terraform",
+      "Zod",
+      "CLI"
+    ],
     "repo": "https://github.com/Archbaer/DoDeploy",
-    "language": "TypeScript"
+    "language": "TypeScript",
+    "description_zh": "开源 CLI：解析 docker-compose 文件（或引导式访谈），生成经过校验、与云厂商无关的应用模型，按各云厂商的规则推荐服务（附理由和成本层级），并产出可审查的 Terraform HCL（含诊断和 TODO 标记）。它不直接执行部署——由你审查、补全并应用。"
   },
   {
     "slug": "caring-iggy",
@@ -25,9 +37,16 @@
     "name": "Caring-Iggy",
     "tagline": "Animal shelter platform on a microservice architecture",
     "description": "Full-stack shelter adoption site. Next.js + React frontend behind a Kong API gateway (token checks, login throttling, no public inner services), five single-responsibility Spring Boot services each with its own PostgreSQL database, CSRF protection on mutations, and end-to-end Playwright tests exercising real user flows.",
-    "tags": ["TypeScript", "Next.js", "Spring Boot", "Kong", "PostgreSQL"],
+    "tags": [
+      "TypeScript",
+      "Next.js",
+      "Spring Boot",
+      "Kong",
+      "PostgreSQL"
+    ],
     "repo": "https://github.com/Archbaer/Caring-Iggy",
-    "language": "TypeScript"
+    "language": "TypeScript",
+    "description_zh": "全栈动物收容所领养平台。Next.js + React 前端，经 Kong API 网关（令牌校验、登录限流、内部服务不对外暴露），五个单一职责的 Spring Boot 微服务各自使用独立的 PostgreSQL 数据库，变更操作带 CSRF 防护，并有覆盖真实用户流程的 Playwright 端到端测试。"
   },
   {
     "slug": "nn-experiments",
@@ -35,9 +54,15 @@
     "name": "nn_experiments",
     "tagline": "Deep learning breadth — theory to working notebooks",
     "description": "Curated experiments across classical deep learning and generative AI: PyTorch and TensorFlow/Keras fundamentals, CNNs for vision, LSTM time series, stacked autoencoders, self-organizing maps, and LangChain-based LLM work with RAG, Chroma vector DB, and Hugging Face. Breadth over depth — techniques, tooling, practical workflows.",
-    "tags": ["Python", "PyTorch", "TensorFlow", "LangChain"],
+    "tags": [
+      "Python",
+      "PyTorch",
+      "TensorFlow",
+      "LangChain"
+    ],
     "repo": "https://github.com/Archbaer/nn_experiments",
-    "language": "Jupyter Notebook"
+    "language": "Jupyter Notebook",
+    "description_zh": "精选的深度学习与生成式 AI 实验：PyTorch 和 TensorFlow/Keras 基础、视觉 CNN、LSTM 时间序列、堆叠自编码器、自组织映射，以及基于 LangChain 的 LLM 实践（RAG、Chroma 向量数据库、Hugging Face）。广度优先——技术、工具链、实用工作流。"
   },
   {
     "slug": "credit-risk-pipeline",
@@ -45,9 +70,15 @@
     "name": "credit_risk_pipepline",
     "tagline": "Credit default prediction with MLflow tracking",
     "description": "End-to-end credit risk classification: raw data split into monthly batches, preprocessed with a fitted scaler, trained as a Random Forest with MLflow experiment tracking and model registry, and served through a FastAPI inference endpoint. Automated batch processing with test coverage.",
-    "tags": ["Python", "MLflow", "FastAPI", "scikit-learn"],
+    "tags": [
+      "Python",
+      "MLflow",
+      "FastAPI",
+      "scikit-learn"
+    ],
     "repo": "https://github.com/Archbaer/credit_risk_pipepline",
-    "language": "Python"
+    "language": "Python",
+    "description_zh": "端到端信用风险分类：原始数据按月分批，用拟合好的缩放器预处理，训练随机森林模型并通过 MLflow 做实验跟踪和模型注册，最后经 FastAPI 推理端点提供服务。自动化批处理，含测试覆盖。"
   },
   {
     "slug": "financehub",
@@ -55,8 +86,14 @@
     "name": "FinanceHub-proj",
     "tagline": "Trading dashboard with portfolio analytics",
     "description": "Stock and cryptocurrency analysis platform with portfolio tracking. Interactive candlestick charts, technical indicators (RSI, MACD, Bollinger Bands, moving averages), performance metrics (Sharpe ratio, volatility, max drawdown), and CSV export. Streamlit frontend with a Flask API variant for a microservices split.",
-    "tags": ["Python", "Streamlit", "Flask", "yfinance"],
+    "tags": [
+      "Python",
+      "Streamlit",
+      "Flask",
+      "yfinance"
+    ],
     "repo": "https://github.com/Archbaer/FinanceHub-proj",
-    "language": "Python"
+    "language": "Python",
+    "description_zh": "股票与加密货币分析平台，带投资组合跟踪。交互式 K 线图、技术指标（RSI、MACD、布林带、移动平均线）、绩效指标（夏普比率、波动率、最大回撤）和 CSV 导出。Streamlit 前端，另有 Flask API 版本用于微服务拆分。"
   }
 ]

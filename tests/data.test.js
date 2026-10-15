@@ -25,5 +25,6 @@ describe('projects.json', () => {
     p.tags.forEach((t) => expect(typeof t).toBe('string'));
     expect(p.tags.length).toBeGreaterThan(0);
     expect(p.description.length).toBeGreaterThan(80);
+    expect(p.description_zh.length).toBeGreaterThan(40);
   });
 });
