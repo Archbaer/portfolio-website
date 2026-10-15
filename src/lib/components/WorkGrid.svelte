@@ -2,10 +2,11 @@
   import SectionHeading from './SectionHeading.svelte';
   import WorkRow from './WorkRow.svelte';
   import projects from '../data/projects.json';
+  import { t } from '../i18n.svelte.js';
 </script>
 
 <section id="work">
-  <SectionHeading title="Selected Work" />
+  <SectionHeading title={t('heading.work')} />
   <div class="rows">
     {#each projects as project (project.slug)}
       <WorkRow {project} />

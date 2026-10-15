@@ -3,7 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Daniel Kebaili — software engineer portfolio. Cybersecurity, data engineering, full-stack systems." />
+    <script>
+      // flash guard: hide page until hydration applies stored/detected zh (removed in +layout onMount)
+      try {
+        var lang = localStorage.getItem('lang') || (navigator.language || '').slice(0, 2);
+        if (lang === 'zh') {
+          document.documentElement.classList.add('zh-pending');
+          document.documentElement.lang = 'zh-CN';
+        }
+      } catch (e) {}
+    </script>
+    <style>
+      .zh-pending body {
+        visibility: hidden;
+      }
+    </style>
     <link rel="canonical" href="https://portfolio-website-dogma8.vercel.app/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Daniel Kebaili — Software Engineer" />

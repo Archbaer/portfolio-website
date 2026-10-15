@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import site from '../data/site.config.js';
+  import { t } from '../i18n.svelte.js';
 
   const BOOT_LINES = [
     { prompt: 'C:\\>', text: ' initializing portfolio...' },
@@ -48,7 +49,7 @@
       <span class="glow">DANIEL</span> <span class="white">KEBAILI</span><span class="cursor" aria-hidden="true"></span>
     </h1>
     <div class="rule"></div>
-    <p class="tagline">{site.role}</p>
+    <p class="tagline">{t('hero.role')}</p>
 
     <div class="boot" aria-label="Terminal boot sequence">
       {#each typed as line}
@@ -72,10 +73,10 @@
       </a>
     </div>
 
-    <a class="pill-btn" href="#work">Explore Work <span aria-hidden="true">→</span></a>
+    <a class="pill-btn" href="#work">{t('hero.explore')} <span aria-hidden="true">→</span></a>
   </div>
   <a class="scroll-cue" href="#work" aria-label="Scroll to work">
-    <span>scroll</span>
+    <span>{t('hero.scroll')}</span>
     <span class="chev" aria-hidden="true">↓</span>
   </a>
 </section>

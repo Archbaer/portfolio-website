@@ -3,6 +3,7 @@
   import SectionHeading from './SectionHeading.svelte';
   import site from '../data/site.config.js';
   import { sanitize, validateForm, LIMITS } from '../form.js';
+  import { t } from '../i18n.svelte.js';
 
   let name = $state('');
   let email = $state('');
@@ -34,9 +35,9 @@
       });
       const data = await res.json();
       if (data.success) sent = true;
-      else errors.push(`send failed — ${data.message || 'try again'}`);
+      else errors.push(`${t('form.send_failed')} — ${data.message || t('form.try_again')}`);
     } catch {
-      errors.push('network error — try again');
+      errors.push(t('form.network_error'));
     } finally {
       sending = false;
     }
@@ -57,10 +58,10 @@
 </script>
 
 <section id="contact">
-  <SectionHeading title="Contact" />
+  <SectionHeading title={t('heading.contact')} />
   <div class="columns">
     <div class="socials">
-      <p class="hint">// find me elsewhere</p>
+      <p class="hint">{t('contact.hint')}</p>
       <ul>
         {#each socials as s}
           <li>
@@ -82,36 +83,36 @@
       </div>
       <div class="term-body">
         {#if sent}
-          <p class="ok-line">&gt; validating... <span class="ok">[OK]</span></p>
-          <p class="ok-line">&gt; message queued <span class="ok">[OK]</span></p>
-          <p class="ok-line">&gt; thanks — I read everything.</p>
+          <p class="ok-line">&gt; {t('contact.validating')} <span class="ok">[OK]</span></p>
+          <p class="ok-line">&gt; {t('contact.queued')} <span class="ok">[OK]</span></p>
+          <p class="ok-line">&gt; {t('contact.thanks')}</p>
           <p class="ok-line">
-            &gt; continue:
+            &gt; {t('contact.continue')}
             <a class="next-link" href={site.links.github} target="_blank" rel="noopener">github ↗</a>
             <a class="next-link" href={site.links.linkedin} target="_blank" rel="noopener">linkedin ↗</a>
             <span class="cursor" aria-hidden="true"></span>
           </p>
         {:else}
           <label>
-            <span class="prompt">&gt; name</span>
+            <span class="prompt">&gt; {t('contact.name')}</span>
             <input bind:value={name} type="text" autocomplete="name" maxlength={LIMITS.name} />
           </label>
           <label>
-            <span class="prompt">&gt; email</span>
+            <span class="prompt">&gt; {t('contact.email')}</span>
             <input bind:value={email} type="text" inputmode="email" autocomplete="email" maxlength={LIMITS.email} />
           </label>
           <label>
-            <span class="prompt">&gt; message</span>
+            <span class="prompt">&gt; {t('contact.message')}</span>
             <textarea bind:value={message} rows="4" maxlength={LIMITS.message}></textarea>
           </label>
           <!-- honeypot: humans never see or fill this; bots do -->
           <input class="hp" bind:value={botcheck} type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <div role="alert">
             {#each errors as err}
-              <p class="err">&gt; {err}</p>
+              <p class="err">&gt; {t(err)}</p>
             {/each}
           </div>
-          <button class="pill-btn" type="submit" disabled={sending}>$ {sending ? 'sending...' : 'send_message'}</button>
+          <button class="pill-btn" type="submit" disabled={sending}>$ {sending ? t('contact.sending') : t('contact.send')}</button>
         {/if}
       </div>
     </form>

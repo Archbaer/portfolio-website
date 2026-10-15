@@ -1,11 +1,12 @@
 <script>
   import { page } from '$app/state';
+  import { t } from '../lib/i18n.svelte.js';
 </script>
 
 <main>
   <h1 class="glow">{page.status}</h1>
-  <p>{page.error?.message ?? 'Lost in the matrix.'}</p>
-  <a href="/">← Back to reality</a>
+  <p>{page.error?.message ?? t('error.lost')}</p>
+  <a href="/">{t('error.back')}</a>
 </main>
 
 <style>
